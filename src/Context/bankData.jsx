@@ -14,7 +14,7 @@ export default function BankDataProvider({ children }) {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank"
+        "  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank"
       );
       // console.log(response.data);
       setGetUsers(response.data);
@@ -22,14 +22,13 @@ export default function BankDataProvider({ children }) {
       console.log(`Error fetching data`, error);
     }
   };
-
   const getUserById = async (id) => {
     try {
       const response = await axios.get(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/${id}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/${id}`
       );
+      fetchData();
       console.log(response.data);
-      //   setGetUserById(response.data);
     } catch (error) {
       console.log(`Error fetching data`, error);
     }
@@ -38,9 +37,10 @@ export default function BankDataProvider({ children }) {
   const filterCashByMoreThan = async (cash) => {
     try {
       const response = await axios.get(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/filter-cash/more-than?cash=${cash}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/filter-cash/more-than?cash=${cash}`
       );
       console.log(response.data);
+      fetchData();
       //   setGetCashMoreThan(response.data);
     } catch (error) {
       console.log(`Error fetching data`, error);
@@ -50,9 +50,10 @@ export default function BankDataProvider({ children }) {
   const filterCashByLessThan = async (cash) => {
     try {
       const response = await axios.get(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/filter-cash/less-than?cash=${cash}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/filter-cash/less-than?cash=${cash}`
       );
       console.log(response.data);
+      fetchData();
       //   setGetCashMoreThan(response.data);
     } catch (error) {
       console.log(`Error fetching data`, error);
@@ -64,9 +65,10 @@ export default function BankDataProvider({ children }) {
   const createUser = async (user) => {
     try {
       const response = await axios.post(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank`,
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank`,
         user
       );
+      fetchData();
       console.log(response.data);
     } catch (error) {
       console.log(`Error creating user`, error);
@@ -86,9 +88,10 @@ export default function BankDataProvider({ children }) {
   const depositCash = async (userId, amount) => {
     try {
       const response = await axios.put(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
       );
-      // console.log(response.data);
+      fetchData();
+      console.log(response.data);
     } catch (error) {
       console.log(`Error depositing cash`, error);
     }
@@ -98,8 +101,9 @@ export default function BankDataProvider({ children }) {
   const updateCredit = async (userId, credit) => {
     try {
       const response = await axios.put(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/update-credit/${userId}?credit=${credit}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/update-credit/${userId}?credit=${credit}`
       );
+      fetchData();
       console.log(response.data);
     } catch (error) {
       console.log(`Error updating credit`, error);
@@ -110,8 +114,9 @@ export default function BankDataProvider({ children }) {
   const withdrawMoney = async (userId, money) => {
     try {
       const response = await axios.put(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/withdraw/${userId}?money=${money}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/withdraw/${userId}?money=${money}`
       );
+      fetchData();
       console.log(response.data);
     } catch (error) {
       console.log(`Error updating credit`, error);
@@ -122,8 +127,9 @@ export default function BankDataProvider({ children }) {
   const transferMoney = async (senderId, recipientId, money) => {
     try {
       const response = await axios.put(
-        `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/transfer/from/${senderId}/to/${recipientId}?money=${money}`
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/transfer/from/${senderId}/to/${recipientId}?money=${money}`
       );
+      fetchData();
       console.log(response.data);
     } catch (error) {
       console.log(`Error updating credit`, error);
@@ -135,6 +141,7 @@ export default function BankDataProvider({ children }) {
     <bankDataContext.Provider
       value={{
         getUsers,
+        fetchData,
         getUserById,
         filterCashByMoreThan,
         filterCashByLessThan,

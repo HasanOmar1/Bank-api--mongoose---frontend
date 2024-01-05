@@ -23,6 +23,9 @@
     margin: 50px 20%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 
@@ -92,3 +95,17 @@
 }
 
 
+.UserDetails .transfer-inputs{
+    display: flex;
+    font-size: 1.3rem;
+    gap: 10px;
+}
+
+.UserDetails .transfer-inputs .recipient-input{
+    width: 150px;
+}
+
+.UserDetails .transfer-form h3{
+    padding-left: 20%;
+    padding-bottom: 20px;
+}
