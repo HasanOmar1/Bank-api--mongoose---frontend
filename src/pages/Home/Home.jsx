@@ -16,20 +16,7 @@ export default function Home() {
         <h3 className="list-title">List of our Clients</h3>
         {getUsers.length > 0 ? (
           <>
-            {getUsers.map((info) => {
-              return (
-                <div className="data" key={info.id}>
-                  <Users
-                    id={info.id}
-                    name={info.name}
-                    email={info.email}
-                    cash={info.cash}
-                    credit={info.credit}
-                    isActive={info.isActive}
-                  />
-                </div>
-              );
-            })}
+            <Users />
           </>
         ) : (
           <h2>Loading data...</h2>
