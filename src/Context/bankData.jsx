@@ -88,7 +88,7 @@ export default function BankDataProvider({ children }) {
       const response = await axios.put(
         `https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
       );
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(`Error depositing cash`, error);
     }

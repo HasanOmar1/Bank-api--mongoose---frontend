@@ -1,3 +1,94 @@
 .UserDetails{
+    height: 100vh;
+    width: 100vw;
+}
+
+.UserDetails .name{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    color: gold;
+}
+
+.UserDetails .info{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.UserDetails .operations{
+    margin: 50px 20%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.UserDetails .back-btn{
+
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid goldenrod;
+    color: goldenrod;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 20%;
+}
+
+.UserDetails .back-btn:hover{
+
+    color: black;
+    background-color: goldenrod;
+}
+
+.UserDetails .back-icon{
+    padding-right: 5px;
+}
+
+.UserDetails form{
+    font-size: 2rem;
+    padding: 10px; 
+}
+
+.UserDetails form input{
+    padding: 5px 10px;
+    font-size: 1rem;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: antiquewhite;
+}
+
+.UserDetails form input:focus{
+    outline: 3px solid orange;
+}
+
+.UserDetails form button{
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid #00ADB5;
+    color: #00ADB5;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: all 0.5s;
     
 }
+
+.UserDetails form button:hover{
+    color: black;
+    background-color: #00ADB5;
+}
+
+
+.UserDetails form h3{
+    padding-bottom: 10px;
+}
+
+
