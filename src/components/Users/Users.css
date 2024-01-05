@@ -1,0 +1,59 @@
+.Users{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.Users .data{
+    
+    border: 1px solid #5F8670;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    width: 85%;    
+}
+
+.Users .data p{
+    color: rgb(231, 238, 130);
+    width: 200px;
+    padding-top: 6px;
+
+}
+
+.Users .line{
+    border: 1px solid brown;
+    height: 30px;
+}
+
+.Users .active{
+    padding-left: 5px;
+}
+
+.Users .green {
+    color: green;
+}
+
+.Users .red {
+    color: red;
+}
+
+.Users .info{
+    color: #fff;
+    padding-left: 5px;
+
+}
+
+
+.Users button{
+    padding: 10px;
+    width: 100px;
+    background-color: #393E46;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #00ADB5;
+
+
+}

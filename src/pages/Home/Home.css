@@ -2,3 +2,20 @@
     height: 100vh;
     width: 100vw;
 }
+
+.Home .welcome-msg{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.Home .accounts-info {
+    
+    padding: 0 5%;
+    margin-top: 50px;
+}
+
+.Home .accounts-info .list-title{
+    color: #FF9800;
+    padding-bottom: 30px;
+}

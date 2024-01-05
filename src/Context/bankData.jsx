@@ -5,8 +5,6 @@ export const bankDataContext = createContext();
 
 export default function BankDataProvider({ children }) {
   const [getUsers, setGetUsers] = useState([]);
-  //   const [getUserById, setGetUserById] = useState([]);
-  //   const [getCashMoreThan, setGetCashMoreThan] = useState();
 
   useEffect(() => {
     fetchData();
@@ -18,7 +16,7 @@ export default function BankDataProvider({ children }) {
       const response = await axios.get(
         "https://fine-gray-giraffe-tie.cyclic.app/api/v1/bank"
       );
-      console.log(response.data);
+      // console.log(response.data);
       setGetUsers(response.data);
     } catch (error) {
       console.log(`Error fetching data`, error);
