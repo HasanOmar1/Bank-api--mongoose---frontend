@@ -15,6 +15,8 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
 
   const errorRef = useRef();
   const getIdsOfUsers = getUsers.map((user) => user.id);
+  const sortedIds = getIdsOfUsers.sort((a, b) => b - a);
+  // console.log(sortedIds[0] + 1);
   // console.log(getIdsOfUsers[getUsers.length - 1]);
 
   function handleCreateClient() {
@@ -25,7 +27,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
       creditRef.current.value.length !== 0
     ) {
       createUser({
-        id: getIdsOfUsers[getUsers.length - 1] + 1,
+        id: sortedIds[0] + 1,
         name: nameRef.current.value,
         email: emailRef.current.value,
         cash: cashRef.current.value,
