@@ -52,6 +52,9 @@
     border-radius: 10px;
     font-weight: bold;
     color: #00ADB5;
+}
 
-
+.Users button:hover{
+    background-color: #00ADB5;
+    color: #393E46;
 }

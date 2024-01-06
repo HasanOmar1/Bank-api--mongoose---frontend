@@ -47,7 +47,6 @@ export default function BankDataProvider({ children }) {
       );
       console.log(response.data);
       fetchData();
-      //   setGetCashMoreThan(response.data);
     } catch (error) {
       // console.log(`Error fetching data`, error);
       console.log(error.response.data.message);
@@ -62,7 +61,6 @@ export default function BankDataProvider({ children }) {
       );
       console.log(response.data);
       fetchData();
-      //   setGetCashMoreThan(response.data);
     } catch (error) {
       // console.log(`Error fetching data`, error);
       console.log(error.response.data.message);

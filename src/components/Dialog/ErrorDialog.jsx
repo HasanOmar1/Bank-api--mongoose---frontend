@@ -2,8 +2,7 @@ import React, { forwardRef } from "react";
 import { useBankData } from "../../Context/bankData";
 
 const errorDialog = forwardRef(function Dialog({ children }, ref) {
-  const { errorMsg } = useBankData();
-  const { setErrorMsg } = useBankData();
+  const { errorMsg, setErrorMsg } = useBankData();
 
   function closeDialog() {
     setErrorMsg("");

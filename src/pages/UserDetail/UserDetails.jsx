@@ -8,15 +8,15 @@ import ErrorDialog from "../../components/Dialog/ErrorDialog";
 
 export default function UserDetails() {
   const [data, setData] = useState({});
-  const { state } = useLocation();
   const {
+    getUsers,
     depositCash,
     withdrawMoney,
-    getUsers,
     updateCredit,
     transferMoney,
     fetchData,
     errorMsg,
+    setErrorMsg,
   } = useBankData();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -30,16 +30,11 @@ export default function UserDetails() {
   const errorRef = useRef();
 
   useEffect(() => {
-    if (state) {
-      setData(state);
-    } else {
-      const findUser = getUsers.find((info) => info.id === +id);
-      console.log(findUser);
-      setData(findUser);
+    const user = getUsers.find((info) => info.id === +id);
+    if (user) {
+      setData(user);
     }
-  }, [getUsers]);
-
-  console.log(data);
+  }, [getUsers, id]);
 
   useEffect(() => {
     if (errorMsg) {
@@ -49,23 +44,23 @@ export default function UserDetails() {
 
   function handleDeposit(e) {
     e.preventDefault();
-    depositCash(state.id, depositRef?.current?.value);
+    depositCash(id, depositRef?.current?.value);
   }
 
   function handleWithdraw(e) {
     e.preventDefault();
-    withdrawMoney(state.id, withdrawRef?.current?.value);
+    withdrawMoney(id, withdrawRef?.current?.value);
   }
 
   function handleUpdateCredit(e) {
     e.preventDefault();
-    updateCredit(state.id, updateCreditRef?.current?.value);
+    updateCredit(id, updateCreditRef?.current?.value);
   }
 
   function handleTransferMoney(e) {
     e.preventDefault();
     transferMoney(
-      state.id,
+      id,
       recipientRef?.current?.value,
       transferMoneyRef?.current?.value
     );
