@@ -155,6 +155,21 @@ export default function BankDataProvider({ children }) {
   };
   // transferMoney(1, 2, 1);
 
+  const deleteUser = async (userId) => {
+    try {
+      const response = await axios.delete(
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/${userId}`
+      );
+      fetchData();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+      setErrorMsg(error.response.data.message);
+
+      // console.log(`Error sending money`, error);
+    }
+  };
+
   return (
     <bankDataContext.Provider
       value={{
@@ -170,6 +185,7 @@ export default function BankDataProvider({ children }) {
         transferMoney,
         errorMsg,
         setErrorMsg,
+        deleteUser,
       }}
     >
       {children}
