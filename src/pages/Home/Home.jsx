@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import { useBankData } from "../../Context/bankData";
 import Users from "../../components/Users/Users";
-import AddClientModal from "../../components/dialog/dialog";
-import ErrorDialog from "../../components/Dialog/ErrorDialog";
+import AddClientModal from "../../components/Dialog/Dialog";
 
 export default function Home() {
   const [data, setData] = useState([]);
