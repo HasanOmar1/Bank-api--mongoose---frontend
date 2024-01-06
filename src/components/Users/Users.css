@@ -68,3 +68,34 @@
 .Users .delete-user:hover{
     color: red;
 }
+
+
+
+@media (max-width: 576px) {
+
+  
+.Users .data{
+    
+    padding: 15px;
+    display: flex;
+    gap: 5px;
+    width: 100vw;    
+}
+
+.Users .data p{
+    color: rgb(231, 238, 130);
+    width: 100%;
+    padding-top: 6px;
+
+}
+
+
+.Users button{
+    padding: 5px 2px;
+    width: 40px;
+    font-size: 10px;
+}
+
+
+   
+}

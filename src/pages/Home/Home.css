@@ -34,7 +34,6 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
-    margin-left: 10px;
     transition: all 0.5s;
     margin-left: 77%;
 }
@@ -72,4 +71,47 @@
 .Home .sort-btns button:hover{
     color: black;
     background-color: #00ADB5;
+}
+
+
+
+@media (max-width: 576px) {
+
+.Home{
+    font-size: 9px;
+    width: 100vw;
+}
+
+.Home .accounts-info{
+    margin-left: 0;
+}
+
+
+.Home .accounts-info .list-title{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.Home .add-client{
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 0;
+}
+
+.Home .users-container{
+    width: 100vw;
+}
+
+.Home .sort-btns{
+    padding-bottom: 10px;
+}
+
+.Home .sort-btns button{
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 0;
+}
+
 }
