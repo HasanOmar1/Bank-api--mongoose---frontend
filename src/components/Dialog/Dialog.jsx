@@ -5,7 +5,7 @@ import { useBankData } from "../../Context/bankData";
 import ErrorDialog from "../Dialog/ErrorDialog";
 
 const dialogModal = forwardRef(function Dialog({ children }, ref) {
-  const { createUser, getUsers } = useBankData();
+  const { createUser, getUsers, errorMsg } = useBankData();
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -20,6 +20,14 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
   // console.log(getIdsOfUsers[getUsers.length - 1]);
 
   function handleCreateClient() {
+    const findEmail = getUsers.map(
+      (data) => data.email === emailRef.current.value
+    );
+    const checkIfIncludes = findEmail.includes(true);
+    if (checkIfIncludes) {
+      alert("Email is already taken");
+    }
+
     if (
       nameRef.current.value.length !== 0 &&
       emailRef.current.value.length !== 0
@@ -33,8 +41,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         isActive: statusRef.current.checked === true ? true : false,
       });
     } else {
-      // errorRef?.current?.showModal();
-      // console.log(`failed creating user`);
+      alert("Please fill the name and email fields");
     }
   }
 
@@ -66,7 +73,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         </button>
         <button className="x">X</button>
       </form>
-      <ErrorDialog ref={errorRef} />
+      {/* <ErrorDialog ref={errorRef} /> */}
     </dialog>
   );
 });

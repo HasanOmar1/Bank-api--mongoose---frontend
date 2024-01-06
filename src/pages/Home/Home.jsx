@@ -3,12 +3,14 @@ import "./Home.css";
 import { useBankData } from "../../Context/bankData";
 import Users from "../../components/Users/Users";
 import AddClientModal from "../../components/dialog/dialog";
+import ErrorDialog from "../../components/Dialog/ErrorDialog";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const { getUsers, sortByHighCash, sortByLowCash } = useBankData();
 
   const dialogRef = useRef();
+  const errorRef = useRef();
 
   useEffect(() => {
     if (getUsers) {
