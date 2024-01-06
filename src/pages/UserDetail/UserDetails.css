@@ -129,3 +129,56 @@
     gap: 20px;
 
 }
+
+
+
+@media (max-width: 576px) {
+  
+
+    .UserDetails .operations h3{
+        font-size: 1.5rem;
+        width: 20ch;
+    }
+    
+    
+    .UserDetails .back-btn{
+        font-size: 0.8rem;
+    }
+    
+
+    .UserDetails form{
+        font-size: 1rem;
+        padding: 10px; 
+    }
+    
+    .UserDetails form input{
+        font-size: 0.8rem;
+        width: 100px;
+    }
+    
+    
+    .UserDetails form button{
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        margin-left: 10px;
+        
+    }
+
+    .UserDetails .transfer-inputs{
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+    
+    
+    .UserDetails .back-btns{
+        margin-left: 5%;
+    }
+    
+    
+
+}

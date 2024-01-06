@@ -116,14 +116,14 @@ export default function UserDetails() {
               <div>
                 <h3>Transfer Money</h3>
                 <div className="transfer-inputs">
-                  <p>Send to: </p>
+                  <p>Send to</p>
                   <input
                     type="number"
                     className="recipient-input"
                     placeholder="Recipient Id"
                     ref={recipientRef}
                   />
-                  <p>Amount:</p>
+                  <p>Amount</p>
                   <input
                     type="number"
                     defaultValue={0}

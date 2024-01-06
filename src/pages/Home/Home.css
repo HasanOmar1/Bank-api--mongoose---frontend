@@ -106,12 +106,17 @@
 
 .Home .sort-btns{
     padding-bottom: 10px;
+    margin-left: 20px;
 }
 
 .Home .sort-btns button{
     padding: 5px 10px;
     font-size: 12px;
     margin-left: 0;
+}
+
+.Home .new-client-container{
+    margin-left: 20px;
 }
 
 }
