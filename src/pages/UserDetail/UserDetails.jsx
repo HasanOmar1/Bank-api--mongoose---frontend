@@ -29,10 +29,6 @@ export default function UserDetails() {
 
   const errorRef = useRef();
 
-  if (errorMsg) {
-    errorRef?.current?.showModal();
-  }
-
   useEffect(() => {
     if (state) {
       setData(state);
@@ -44,6 +40,12 @@ export default function UserDetails() {
   }, [getUsers]);
 
   console.log(data);
+
+  useEffect(() => {
+    if (errorMsg) {
+      errorRef?.current?.showModal();
+    }
+  }, [errorMsg]);
 
   function handleDeposit(e) {
     e.preventDefault();
@@ -77,14 +79,8 @@ export default function UserDetails() {
             <h1>{data.name}</h1>
           </div>
           <div className="back-btns">
-            <button className="back-btn" onClick={() => navigate(-1)}>
+            <button className="back-btn home" onClick={() => navigate("/")}>
               <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
-              Back
-            </button>
-            <button
-              className="not-found-back back-btn home"
-              onClick={() => navigate("/")}
-            >
               Home
             </button>
           </div>
@@ -97,7 +93,7 @@ export default function UserDetails() {
           </div>
 
           <div className="operations">
-            <form className="deposit-form" onClick={handleDeposit}>
+            <form className="deposit-form" onSubmit={handleDeposit}>
               <div>
                 <h3>Deposit Cash</h3>
                 <input type="number" defaultValue={0} ref={depositRef} />
@@ -105,7 +101,7 @@ export default function UserDetails() {
               </div>
             </form>
 
-            <form className="withdraw-form" onClick={handleWithdraw}>
+            <form className="withdraw-form" onSubmit={handleWithdraw}>
               <div>
                 <h3>Withdraw Money</h3>
                 <input type="number" defaultValue={0} ref={withdrawRef} />
@@ -113,7 +109,7 @@ export default function UserDetails() {
               </div>
             </form>
 
-            <form className="update-credit-form" onClick={handleUpdateCredit}>
+            <form className="update-credit-form" onSubmit={handleUpdateCredit}>
               <div>
                 <h3>Update Credit</h3>
                 <input type="number" defaultValue={100} ref={updateCreditRef} />
@@ -121,7 +117,7 @@ export default function UserDetails() {
               </div>
             </form>
 
-            <form className="transfer-form" onClick={handleTransferMoney}>
+            <form className="transfer-form" onSubmit={handleTransferMoney}>
               <div>
                 <h3>Transfer Money</h3>
                 <div className="transfer-inputs">

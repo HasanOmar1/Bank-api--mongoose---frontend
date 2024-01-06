@@ -31,7 +31,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         isActive: statusRef.current.checked === true ? true : false,
       });
     } else {
-      errorRef?.current?.showModal();
+      // errorRef?.current?.showModal();
     }
   }
 

@@ -81,9 +81,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      // console.log(`Error creating user`, error);
       console.log(error.response.data.message);
-      setErrorMsg(error.response.data.message);
+      setErrorMsg(`Email is already taken`);
     }
   };
 
@@ -103,11 +102,11 @@ export default function BankDataProvider({ children }) {
         `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
       );
       await fetchData();
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       // console.log(`Error depositing cash`, error);
-      console.log(error.response.data.message);
       setErrorMsg(error.response.data.message);
+      console.log(error.response.data.message);
     }
   };
   // depositCash(1, 10);

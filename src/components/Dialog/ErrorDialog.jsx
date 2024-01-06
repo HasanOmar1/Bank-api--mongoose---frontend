@@ -8,6 +8,7 @@ const errorDialog = forwardRef(function Dialog({ children }, ref) {
   function closeDialog() {
     setErrorMsg("");
   }
+
   return (
     <dialog ref={ref} className="error-dialog">
       <form method="dialog">
