@@ -1,9 +1,17 @@
-# React + Vite
+# Fullstack Bank Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have created a Bank website using backend [MongoDB / Mongoose ] and frontend [React].
 
-Currently, two official plugins are available:
+## Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# Bank-api--mongoose---frontend
+- Backend : https://bank-api-backend-using-mongoose.onrender.com/
+- Frontend : https://bank-mongoose-frontend.netlify.app/
+
+## About
+
+I have used axios package to connect my backend with my frontend.
+The first page shows all the clients in the bank with all of their details ,
+ID , Name , Email , Cash , Credit , Activision Status.
+You will also find a more info button next to each user info , when u click on it it will take you
+to the client's page where you will be able to Deposit Cash , Withdraw Money , Update Credit and Transfer Money,
+you can transfer money only to active clients.
