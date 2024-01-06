@@ -109,3 +109,16 @@
     padding-left: 20%;
     padding-bottom: 20px;
 }
+
+.UserDetails .not-found{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+}
+
+.UserDetails .not-found-back{
+    margin-left: 0;
+}

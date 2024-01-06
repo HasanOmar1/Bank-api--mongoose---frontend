@@ -19,9 +19,11 @@ export default function BankDataProvider({ children }) {
       // console.log(response.data);
       setGetUsers(response.data);
     } catch (error) {
-      console.log(`Error fetching data`, error);
+      // console.log(`Error fetching data`, error);
+      console.log(error.response.data.message);
     }
   };
+
   const getUserById = async (id) => {
     try {
       const response = await axios.get(
@@ -30,7 +32,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error fetching data`, error);
+      // console.log(`Error fetching data`, error);
+      console.log(error.response.data.message);
     }
   };
 
@@ -43,7 +46,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       //   setGetCashMoreThan(response.data);
     } catch (error) {
-      console.log(`Error fetching data`, error);
+      // console.log(`Error fetching data`, error);
+      console.log(error.response.data.message);
     }
   };
 
@@ -56,7 +60,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       //   setGetCashMoreThan(response.data);
     } catch (error) {
-      console.log(`Error fetching data`, error);
+      // console.log(`Error fetching data`, error);
+      console.log(error.response.data.message);
     }
   };
 
@@ -71,7 +76,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error creating user`, error);
+      // console.log(`Error creating user`, error);
+      console.log(error.response.data.message);
     }
   };
 
@@ -90,10 +96,11 @@ export default function BankDataProvider({ children }) {
       const response = await axios.put(
         `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
       );
-      fetchData();
+      await fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error depositing cash`, error);
+      // console.log(`Error depositing cash`, error);
+      console.log(error.response.data.message);
     }
   };
   // depositCash(1, 10);
@@ -106,7 +113,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error updating credit`, error);
+      // console.log(`Error updating credit`, error);
+      console.log(error.response.data.message);
     }
   };
   // updateCredit(1, 800);
@@ -119,7 +127,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error updating credit`, error);
+      // console.log(`Error updating credit`, error);
+      console.log(error.response.data.message);
     }
   };
   // withdrawMoney(1, 10);
@@ -132,7 +141,8 @@ export default function BankDataProvider({ children }) {
       fetchData();
       console.log(response.data);
     } catch (error) {
-      console.log(`Error updating credit`, error);
+      console.log(error.response.data.message);
+      // console.log(`Error sending money`, error);
     }
   };
   // transferMoney(1, 2, 1);

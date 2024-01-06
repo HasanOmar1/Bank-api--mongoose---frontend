@@ -1,16 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./UserDetails.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBankData } from "../../Context/bankData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function UserDetails() {
   const [depositValue, setDepositValue] = useState(0);
+  const [data, setData] = useState({});
   const { state } = useLocation();
-  const { depositCash, withdrawMoney, getUsers, updateCredit, transferMoney } =
-    useBankData();
+  const {
+    depositCash,
+    withdrawMoney,
+    getUsers,
+    updateCredit,
+    transferMoney,
+    fetchData,
+  } = useBankData();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const depositRef = useRef();
   const withdrawRef = useRef();
@@ -19,8 +27,16 @@ export default function UserDetails() {
   const recipientRef = useRef();
 
   useEffect(() => {
-    // fetchData();
+    if (state) {
+      setData(state);
+    } else {
+      const findUser = getUsers.find((info) => info.id === +id);
+      console.log(findUser);
+      setData(findUser);
+    }
   }, [getUsers]);
+
+  console.log(data);
 
   function handleDeposit(e) {
     e.preventDefault();
@@ -48,20 +64,20 @@ export default function UserDetails() {
 
   return (
     <main className="UserDetails page">
-      {state ? (
+      {data ? (
         <>
           <div className="name">
-            <h1>{state.name}</h1>
+            <h1>{data.name}</h1>
           </div>
           <button className="back-btn" onClick={() => navigate(-1)}>
             <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
             Back
           </button>
           <div className="info">
-            <div className="id">ID: {state.id}</div>
-            <div className="email">Email: {state.email}</div>
-            <div className="cash">Cash: {state.cash}</div>
-            <div className="credit">Credit: {state.credit}</div>
+            <div className="id">ID: {data.id}</div>
+            <div className="email">Email: {data.email}</div>
+            <div className="cash">Cash: {data.cash}</div>
+            <div className="credit">Credit: {data.credit}</div>
           </div>
 
           <div className="operations">
@@ -75,7 +91,7 @@ export default function UserDetails() {
 
             <form className="withdraw-form" onClick={handleWithdraw}>
               <div>
-                <h3>Withdraw Cash</h3>
+                <h3>Withdraw Money</h3>
                 <input type="number" defaultValue={0} ref={withdrawRef} />
                 <button type="submit">Withdraw</button>
               </div>
@@ -99,6 +115,7 @@ export default function UserDetails() {
                     className="recipient-input"
                     placeholder="Recipient Id"
                     ref={recipientRef}
+                    defaultValue={2}
                   />
                   <p>Amount:</p>
                   <input
@@ -113,30 +130,17 @@ export default function UserDetails() {
           </div>
         </>
       ) : (
-        <h2>Loading data...</h2>
+        <div className="not-found">
+          <button
+            className="not-found-back back-btn "
+            onClick={() => navigate("/")}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
+            Home
+          </button>
+          <h2>No data found</h2>
+        </div>
       )}
-      {/* <div className="name">
-        <h1>{state.name}</h1>
-      </div>
-      <button className="back-btn" onClick={() => navigate(-1)}>
-        <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
-        Back
-      </button>
-      <div className="info">
-        <div className="id">ID: {state.id}</div>
-        <div className="email">Email: {state.email}</div>
-        <div className="cash">Cash: {state.cash}</div>
-        <div className="credit">Credit: {state.credit}</div>
-      </div>
-      <div className="operations">
-        <form className="deposit-form" onClick={handleDeposit}>
-          <div className="deposit">
-            <h3>Deposit Cash</h3>
-            <input type="number" defaultValue={0} ref={depositRef} />
-            <button type="submit">Deposit</button>
-          </div>
-        </form>
-      </div> */}
     </main>
   );
 }
