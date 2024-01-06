@@ -2,10 +2,9 @@ import React, { useRef } from "react";
 import "./Dialog.css";
 import { forwardRef } from "react";
 import { useBankData } from "../../Context/bankData";
-import ErrorDialog from "../Dialog/ErrorDialog";
 
 const dialogModal = forwardRef(function Dialog({ children }, ref) {
-  const { createUser, getUsers, errorMsg } = useBankData();
+  const { createUser, getUsers } = useBankData();
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -13,11 +12,8 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
   const creditRef = useRef();
   const statusRef = useRef();
 
-  const errorRef = useRef();
   const getIdsOfUsers = getUsers.map((user) => user.id);
   const sortedIds = getIdsOfUsers.sort((a, b) => b - a);
-  // console.log(sortedIds[0] + 1);
-  // console.log(getIdsOfUsers[getUsers.length - 1]);
 
   function handleCreateClient() {
     const findEmail = getUsers.map(
@@ -51,18 +47,8 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         <div className="input-container">
           <input type="text" placeholder="Name" ref={nameRef} />
           <input type="email" placeholder="Email" ref={emailRef} />
-          <input
-            type="number"
-            placeholder="Cash"
-            ref={cashRef}
-            defaultValue={0}
-          />
-          <input
-            type="number"
-            placeholder="Credit"
-            ref={creditRef}
-            defaultValue={0}
-          />
+          <input type="number" placeholder="Cash" ref={cashRef} />
+          <input type="number" placeholder="Credit" ref={creditRef} />
           <div className="active-status">
             <label htmlFor="activisionStatus">Activision status</label>
             <input type="checkbox" id="activisionStatus" ref={statusRef} />
@@ -73,7 +59,6 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         </button>
         <button className="x">X</button>
       </form>
-      {/* <ErrorDialog ref={errorRef} /> */}
     </dialog>
   );
 });
