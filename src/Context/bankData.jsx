@@ -80,7 +80,6 @@ export default function BankDataProvider({ children }) {
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
-      setErrorMsg(`Email is already taken`);
     }
   };
 
@@ -88,8 +87,8 @@ export default function BankDataProvider({ children }) {
   //   id: getUsers.length + 1,
   //   name: "Shrek",
   //   email: "shrek@gmail.com",
-  //   cash: 200,
-  //   credit: 400,
+  //   cash: 200, default = 0
+  //   credit: 400, default = 0
   //   isActive: false,
   // });
 

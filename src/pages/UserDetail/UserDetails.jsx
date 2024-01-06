@@ -4,7 +4,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBankData } from "../../Context/bankData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import ErrorDialog from "../../components/Dialog/ErrorDialog";
 import Operations from "../../components/Operations/Operations";
 
 export default function UserDetails() {

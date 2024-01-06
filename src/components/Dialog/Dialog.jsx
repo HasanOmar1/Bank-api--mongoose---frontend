@@ -22,20 +22,19 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
   function handleCreateClient() {
     if (
       nameRef.current.value.length !== 0 &&
-      emailRef.current.value.length !== 0 &&
-      cashRef.current.value.length !== 0 &&
-      creditRef.current.value.length !== 0
+      emailRef.current.value.length !== 0
     ) {
       createUser({
         id: sortedIds[0] + 1,
         name: nameRef.current.value,
         email: emailRef.current.value,
-        cash: cashRef.current.value,
-        credit: creditRef.current.value,
+        cash: cashRef.current.value === "" ? 0 : cashRef.current.value,
+        credit: creditRef.current.value === "" ? 0 : creditRef.current.value,
         isActive: statusRef.current.checked === true ? true : false,
       });
     } else {
       // errorRef?.current?.showModal();
+      // console.log(`failed creating user`);
     }
   }
 
@@ -45,8 +44,18 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         <div className="input-container">
           <input type="text" placeholder="Name" ref={nameRef} />
           <input type="email" placeholder="Email" ref={emailRef} />
-          <input type="number" placeholder="Cash" ref={cashRef} />
-          <input type="number" placeholder="Credit" ref={creditRef} />
+          <input
+            type="number"
+            placeholder="Cash"
+            ref={cashRef}
+            defaultValue={0}
+          />
+          <input
+            type="number"
+            placeholder="Credit"
+            ref={creditRef}
+            defaultValue={0}
+          />
           <div className="active-status">
             <label htmlFor="activisionStatus">Activision status</label>
             <input type="checkbox" id="activisionStatus" ref={statusRef} />
