@@ -4,9 +4,9 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBankData } from "../../Context/bankData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import ErrorDialog from "../../components/Dialog/ErrorDialog";
 
 export default function UserDetails() {
-  const [depositValue, setDepositValue] = useState(0);
   const [data, setData] = useState({});
   const { state } = useLocation();
   const {
@@ -16,6 +16,7 @@ export default function UserDetails() {
     updateCredit,
     transferMoney,
     fetchData,
+    errorMsg,
   } = useBankData();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -25,6 +26,12 @@ export default function UserDetails() {
   const updateCreditRef = useRef();
   const transferMoneyRef = useRef();
   const recipientRef = useRef();
+
+  const errorRef = useRef();
+
+  if (errorMsg) {
+    errorRef?.current?.showModal();
+  }
 
   useEffect(() => {
     if (state) {
@@ -115,7 +122,6 @@ export default function UserDetails() {
                     className="recipient-input"
                     placeholder="Recipient Id"
                     ref={recipientRef}
-                    defaultValue={2}
                   />
                   <p>Amount:</p>
                   <input
@@ -127,6 +133,7 @@ export default function UserDetails() {
                 </div>
               </div>
             </form>
+            <ErrorDialog ref={errorRef} />
           </div>
         </>
       ) : (

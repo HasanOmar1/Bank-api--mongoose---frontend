@@ -1,0 +1,115 @@
+dialog {
+    text-align: center;
+    width: 500px;
+    height: 400px;
+    position: fixed;
+    border-radius: 20px;
+    opacity: 0.9;
+    line-height: 1.7;
+    border: none;
+    letter-spacing: 2px;
+    padding-top: 50px;    
+    top: 25%;
+    left: 35%;
+    background-color: #222831;
+}
+dialog::backdrop{
+    background-color: black;
+    opacity: 0.6;
+}
+
+
+dialog h3{
+    color: rgb(43, 185, 43);
+}
+
+.close-dialog{
+    padding: 10px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #00ADB5;
+    background-color: #393E46;
+    font-weight: bold;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    margin-left: 30px;
+    border: none;
+    
+}
+.close-dialog:hover{
+    background-color: #5e6c819b;
+}
+
+
+.create-dialog .input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.create-dialog input{
+
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+    font-size: 1rem;
+}
+
+.create-dialog input:focus{
+    outline: 3px solid #00ADB5;
+}
+
+.create-dialog #activisionStatus{
+    width: 20px;
+    cursor: pointer;
+}
+.create-dialog #activisionStatus:focus{
+    outline: none;
+}
+
+.create-dialog  .active-status{
+
+    display: flex;
+    gap: 10px;
+    color: white;
+    font-size: 1.2rem;
+
+}
+
+.create-dialog  .x{
+    position: absolute;
+    top: 10px;
+    border: none;
+    background-color: transparent;
+    color: greenyellow;
+    right: 30px;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+}
+
+.create-dialog  .x:hover{
+    color: red;
+}
+
+.error-dialog{
+    color: white;
+    font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+
+dialog{
+    left: 130px;
+}
+
+}
+
+@media (max-width: 576px) {
+
+    dialog{
+        left: 10px;
+    }
+   
+}

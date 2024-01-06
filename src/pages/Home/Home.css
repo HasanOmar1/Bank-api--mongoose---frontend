@@ -1,6 +1,7 @@
 .Home{
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh; */
+    height: fit-content;
+    width: 99vw;
 }
 
 .Home .welcome-msg{
@@ -11,11 +12,38 @@
 
 .Home .accounts-info {
     
-    padding: 0 5%;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-left: 200px;
 }
 
 .Home .accounts-info .list-title{
     color: #FF9800;
     padding-bottom: 30px;
+}
+
+.Home .new-client-container{
+    padding-bottom: 20px;
+}
+
+.Home .add-client{
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid #00ADB5;
+    color: #00ADB5;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: all 0.5s;
+    margin-left: 77%;
+}
+
+.Home .add-client:hover{
+    color: black;
+    background-color: #00ADB5;
+}
+
+.Home .users-container{
+    padding-bottom: 40px;
 }
