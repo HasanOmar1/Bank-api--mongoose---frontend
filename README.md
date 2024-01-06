@@ -38,3 +38,9 @@ I have created a Bank website using backend [MongoDB / Mongoose ] and frontend [
 - Cant update credit to negative credit.
 - Cant transfer negative money.
 - Cant transfer money to yourself.
+
+## Preview
+
+![Alt text](./src/assets/home.png)
+![Alt text](./src/assets/client-page.png)
+![Alt text](./src/assets/create-acc.png)
