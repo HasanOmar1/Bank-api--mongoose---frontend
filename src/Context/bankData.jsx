@@ -165,8 +165,30 @@ export default function BankDataProvider({ children }) {
     } catch (error) {
       console.log(error.response.data.message);
       setErrorMsg(error.response.data.message);
+    }
+  };
 
-      // console.log(`Error sending money`, error);
+  const sortByLowCash = async () => {
+    try {
+      const response = await axios.get(
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/sort-low`
+      );
+      setGetUsers(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sortByHighCash = async () => {
+    try {
+      const response = await axios.get(
+        `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/sort-high`
+      );
+      setGetUsers(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -186,6 +208,8 @@ export default function BankDataProvider({ children }) {
         errorMsg,
         setErrorMsg,
         deleteUser,
+        sortByLowCash,
+        sortByHighCash,
       }}
     >
       {children}
