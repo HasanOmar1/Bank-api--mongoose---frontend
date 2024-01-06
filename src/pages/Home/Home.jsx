@@ -25,7 +25,7 @@ export default function Home() {
       <div className="welcome-msg">
         <h2>Welcome to the global bank</h2>
       </div>
-      {getUsers ? (
+      {getUsers.length > 0 ? (
         <>
           <div className="accounts-info">
             <h3 className="list-title">List of our Clients</h3>
@@ -44,18 +44,14 @@ export default function Home() {
                 Add new Client
               </button>
             </div>
-            {getUsers.length > 0 ? (
-              <div className="users-container">
-                <Users />
-              </div>
-            ) : (
-              <h2>Loading data...</h2>
-            )}
+            <div className="users-container">
+              <Users />
+            </div>
             <AddClientModal ref={dialogRef} />
           </div>
         </>
       ) : (
-        <h3>No</h3>
+        <h2>Loading data...</h2>
       )}
     </main>
   );
