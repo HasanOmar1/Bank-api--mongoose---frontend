@@ -39,7 +39,6 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
-    margin-left: 20%;
 }
 
 .UserDetails .back-btn:hover{
@@ -121,4 +120,12 @@
 
 .UserDetails .not-found-back{
     margin-left: 0;
+}
+
+
+.UserDetails .back-btns{
+    margin-left: 20%;
+    display: flex;
+    gap: 20px;
+
 }

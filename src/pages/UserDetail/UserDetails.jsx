@@ -76,10 +76,19 @@ export default function UserDetails() {
           <div className="name">
             <h1>{data.name}</h1>
           </div>
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
-            Back
-          </button>
+          <div className="back-btns">
+            <button className="back-btn" onClick={() => navigate(-1)}>
+              <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
+              Back
+            </button>
+            <button
+              className="not-found-back back-btn home"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </button>
+          </div>
+
           <div className="info">
             <div className="id">ID: {data.id}</div>
             <div className="email">Email: {data.email}</div>
