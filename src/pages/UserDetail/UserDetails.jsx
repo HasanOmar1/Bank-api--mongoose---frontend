@@ -33,6 +33,8 @@ export default function UserDetails() {
     const user = getUsers.find((info) => info.id === +id);
     if (user) {
       setData(user);
+    } else {
+      setData(null);
     }
   }, [getUsers, id]);
 
