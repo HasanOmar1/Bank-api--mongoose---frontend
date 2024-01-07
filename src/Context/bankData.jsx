@@ -98,8 +98,10 @@ export default function BankDataProvider({ children }) {
       const response = await axios.put(
         `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/deposit-cash/${userId}?cash=${amount}`
       );
-      await fetchData();
+      fetchData();
+
       // console.log(response.data);
+      setErrorMsg("Money has been deposited");
     } catch (error) {
       // console.log(`Error depositing cash`, error);
       setErrorMsg(error.response.data.message);
@@ -115,6 +117,7 @@ export default function BankDataProvider({ children }) {
       );
       fetchData();
       console.log(response.data);
+      setErrorMsg("Credit has been updated");
     } catch (error) {
       // console.log(`Error updating credit`, error);
       console.log(error.response.data.message);
@@ -129,6 +132,8 @@ export default function BankDataProvider({ children }) {
         `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/withdraw/${userId}?money=${money}`
       );
       fetchData();
+      setErrorMsg("Money has been withdrawn");
+
       console.log(response.data);
     } catch (error) {
       // console.log(`Error updating credit`, error);
@@ -144,6 +149,8 @@ export default function BankDataProvider({ children }) {
         `  https://bank-api-backend-using-mongoose.onrender.com/api/v1/bank/transfer/from/${senderId}/to/${recipientId}?money=${money}`
       );
       fetchData();
+      setErrorMsg("Money has been transferred");
+
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
