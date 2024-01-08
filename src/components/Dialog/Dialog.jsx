@@ -23,10 +23,6 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
     );
     const checkIfIncludes = findEmail.includes(true);
     setEmailExists(checkIfIncludes);
-    // if (checkIfIncludes) {
-    //   alert("Email is already taken");
-    //
-    // }
 
     if (
       nameRef.current.value.length !== 0 &&
@@ -53,7 +49,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
             </FailedToCreateClientModal>
           )}
           <input type="text" placeholder="Name" ref={nameRef} />
-          <input type="text" placeholder="Email" ref={emailRef} />
+          <input type="email" placeholder="Email" ref={emailRef} />
           <input type="number" placeholder="Cash" ref={cashRef} />
           <input type="number" placeholder="Credit" ref={creditRef} />
           <div className="active-status">
