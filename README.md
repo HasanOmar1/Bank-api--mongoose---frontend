@@ -1,6 +1,7 @@
 # Fullstack Bank Website
 
 I have created a Bank website using backend [MongoDB / Mongoose ] and frontend [React].
+I have used Material UI for the sign-up and sign-in pages.
 
 ## Links
 
@@ -8,6 +9,11 @@ I have created a Bank website using backend [MongoDB / Mongoose ] and frontend [
 - Frontend : https://bank-mongoose-frontend.netlify.app/
 
 ## About
+
+- You can create new account.
+- You can log-in to your account.
+- I used bcrypt to hash the password.
+- I saved each user token and info in the Local-Storage.
 
 - I have used axios package to connect my backend with my frontend.
 - The Home page shows all the clients in the bank with all of their details ,
