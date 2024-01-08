@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 export default function Operations() {
   const {
-    getUsers,
     depositCash,
     withdrawMoney,
     updateCredit,
@@ -73,7 +72,6 @@ export default function Operations() {
 
   return (
     <div className="operations">
-      {/* {data && ( */}
       <>
         <form className="deposit-form" onSubmit={handleDeposit}>
           <div>
@@ -118,7 +116,6 @@ export default function Operations() {
         </form>
         <ErrorDialog ref={errorRef} />
       </>
-      {/* )} */}
     </div>
   );
 }

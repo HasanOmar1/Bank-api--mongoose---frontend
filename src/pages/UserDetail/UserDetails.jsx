@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import "./UserDetails.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useBankData } from "../../Context/bankData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import Operations from "../../components/Operations/Operations";
-import axios from "axios";
 
 export default function UserDetails() {
-  const { getUserById, currentClient, setCurrentClient } = useBankData();
+  const { getUserById, currentClient } = useBankData();
   const navigate = useNavigate();
   const { id } = useParams();
 
