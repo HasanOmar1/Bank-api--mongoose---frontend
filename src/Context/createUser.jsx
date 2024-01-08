@@ -37,7 +37,7 @@ export default function CreateUserProvider({ children }) {
         user
       );
       if (!response) {
-        setFailedCreating({ message: `Failed to connect to server` });
+        setFailedCreating(`Failed to connect to server`);
       }
       console.log(response.data);
       setCurrentUser(response.data);
