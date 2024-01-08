@@ -3,13 +3,30 @@ import "./Home.css";
 import { useBankData } from "../../Context/bankData";
 import Users from "../../components/Users/Users";
 import AddClientModal from "../../components/Dialog/Dialog";
+import { useCreateUser } from "../../Context/createUser";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const { getUsers, sortByHighCash, sortByLowCash } = useBankData();
-
+  const { getUsers, sortByHighCash, sortByLowCash, fetchData } = useBankData();
+  const { currentUser, setCurrentUser } = useCreateUser();
+  const navigate = useNavigate();
   const dialogRef = useRef();
   const errorRef = useRef();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchData();
+    }
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setCurrentUser(foundUser);
+    }
+  }, []);
 
   useEffect(() => {
     if (getUsers) {
@@ -21,14 +38,26 @@ export default function Home() {
     dialogRef.current.showModal();
   }
 
+  function handleLogOut() {
+    localStorage.clear();
+    navigate("/");
+  }
+
   return (
     <main className="Home page">
       <div className="welcome-msg">
-        <h2>Welcome to the global bank</h2>
+        <h2>
+          Welcome <span className="current-user-name">{currentUser.name}</span>{" "}
+          to the global bank
+        </h2>
       </div>
       {getUsers.length > 0 ? (
         <>
           <div className="accounts-info">
+            <button onClick={handleLogOut} className="sign-out">
+              <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
+              Sign out
+            </button>
             <h3 className="list-title">List of our Clients</h3>
 
             <div className="sort-btns">

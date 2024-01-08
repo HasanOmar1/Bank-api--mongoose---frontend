@@ -1,6 +1,6 @@
 .Home{
     min-height: 100vh;
-    width: 99vw;
+    width: 100vw;
 }
 
 .Home .welcome-msg{
@@ -72,8 +72,33 @@
     background-color: #00ADB5;
 }
 
+.Home .current-user-name{
+    color: gold;
+}
 
+.Home .sign-out{
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid goldenrod;
+    color: goldenrod;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    position: absolute;
+    top: 50px;
+    right: 15%;
+}
 
+.Home .sign-out:hover{
+
+    color: black;
+    background-color: goldenrod;
+}
+
+.Home .back-icon{
+    padding-right: 5px;
+}
 @media (max-width: 576px) {
 
 .Home{
@@ -117,5 +142,11 @@
 .Home .new-client-container{
     margin-left: 20px;
 }
-
+.Home .sign-out{
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 150px;
+    right: 6%;
+}
 }

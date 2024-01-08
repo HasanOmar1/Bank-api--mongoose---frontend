@@ -11,18 +11,9 @@ export default function Operations() {
     updateCredit,
     transferMoney,
     errorMsg,
+    getUserById,
   } = useBankData();
   const { id } = useParams();
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    const user = getUsers.find((info) => info.id === +id);
-    if (user) {
-      setData(user);
-    } else {
-      setData(null);
-    }
-  }, [getUsers, id]);
 
   const depositRef = useRef();
   const withdrawRef = useRef();
@@ -38,78 +29,96 @@ export default function Operations() {
     }
   }, [errorMsg]);
 
-  function handleDeposit(e) {
-    e.preventDefault();
-    depositCash(id, depositRef?.current?.value);
+  async function handleDeposit(e) {
+    try {
+      e.preventDefault();
+      await depositCash(id, depositRef?.current?.value);
+      getUserById(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function handleWithdraw(e) {
-    e.preventDefault();
-    withdrawMoney(id, withdrawRef?.current?.value);
+  async function handleWithdraw(e) {
+    try {
+      e.preventDefault();
+      await withdrawMoney(id, withdrawRef?.current?.value);
+      getUserById(id);
+    } catch (error) {}
   }
 
-  function handleUpdateCredit(e) {
-    e.preventDefault();
-    updateCredit(id, updateCreditRef?.current?.value);
+  async function handleUpdateCredit(e) {
+    try {
+      e.preventDefault();
+      await updateCredit(id, updateCreditRef?.current?.value);
+      getUserById(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function handleTransferMoney(e) {
-    e.preventDefault();
-    transferMoney(
-      id,
-      recipientRef?.current?.value,
-      transferMoneyRef?.current?.value
-    );
+  async function handleTransferMoney(e) {
+    try {
+      e.preventDefault();
+      await transferMoney(
+        id,
+        recipientRef?.current?.value,
+        transferMoneyRef?.current?.value
+      );
+      getUserById(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
     <div className="operations">
-      {data && (
-        <>
-          <form className="deposit-form" onSubmit={handleDeposit}>
-            <div>
-              <h3>Deposit Cash</h3>
-              <input type="number" defaultValue={0} ref={depositRef} />
-              <button type="submit">Deposit</button>
-            </div>
-          </form>
+      {/* {data && ( */}
+      <>
+        <form className="deposit-form" onSubmit={handleDeposit}>
+          <div>
+            <h3>Deposit Cash</h3>
+            <input type="number" defaultValue={0} ref={depositRef} />
+            <button type="submit">Deposit</button>
+          </div>
+        </form>
 
-          <form className="withdraw-form" onSubmit={handleWithdraw}>
-            <div>
-              <h3>Withdraw Money</h3>
-              <input type="number" defaultValue={0} ref={withdrawRef} />
-              <button type="submit">Withdraw</button>
-            </div>
-          </form>
+        <form className="withdraw-form" onSubmit={handleWithdraw}>
+          <div>
+            <h3>Withdraw Money</h3>
+            <input type="number" defaultValue={0} ref={withdrawRef} />
+            <button type="submit">Withdraw</button>
+          </div>
+        </form>
 
-          <form className="update-credit-form" onSubmit={handleUpdateCredit}>
-            <div>
-              <h3>Update Credit</h3>
-              <input type="number" defaultValue={100} ref={updateCreditRef} />
-              <button type="submit">Update</button>
-            </div>
-          </form>
+        <form className="update-credit-form" onSubmit={handleUpdateCredit}>
+          <div>
+            <h3>Update Credit</h3>
+            <input type="number" defaultValue={100} ref={updateCreditRef} />
+            <button type="submit">Update</button>
+          </div>
+        </form>
 
-          <form className="transfer-form" onSubmit={handleTransferMoney}>
-            <div>
-              <h3>Transfer Money</h3>
-              <div className="transfer-inputs">
-                <p>Send to</p>
-                <input
-                  type="number"
-                  className="recipient-input"
-                  placeholder="Recipient Id"
-                  ref={recipientRef}
-                />
-                <p>Amount</p>
-                <input type="number" defaultValue={0} ref={transferMoneyRef} />
-                <button type="submit">Transfer</button>
-              </div>
+        <form className="transfer-form" onSubmit={handleTransferMoney}>
+          <div>
+            <h3>Transfer Money</h3>
+            <div className="transfer-inputs">
+              <p>Send to</p>
+              <input
+                type="number"
+                className="recipient-input"
+                placeholder="Recipient Id"
+                ref={recipientRef}
+              />
+              <p>Amount</p>
+              <input type="number" defaultValue={0} ref={transferMoneyRef} />
+              <button type="submit">Transfer</button>
             </div>
-          </form>
-          <ErrorDialog ref={errorRef} />
-        </>
-      )}
+          </div>
+        </form>
+        <ErrorDialog ref={errorRef} />
+      </>
+      {/* )} */}
     </div>
   );
 }

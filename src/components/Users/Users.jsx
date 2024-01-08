@@ -41,7 +41,7 @@ export default function Users() {
             </p>
 
             <hr className="line" />
-            <Link to={`${info.id}`} state={info}>
+            <Link to={`/data/${info.id}`} state={info}>
               <button>More Info</button>
             </Link>
 

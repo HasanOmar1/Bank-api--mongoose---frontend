@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import { useBankData } from "../../Context/bankData";
 
 const dialogModal = forwardRef(function Dialog({ children }, ref) {
-  const { createUser, getUsers } = useBankData();
+  const { addClient, getUsers } = useBankData();
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -28,7 +28,7 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
       nameRef.current.value.length !== 0 &&
       emailRef.current.value.length !== 0
     ) {
-      createUser({
+      addClient({
         id: sortedIds[0] + 1,
         name: nameRef.current.value,
         email: emailRef.current.value,

@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { useBankData } from "../../Context/bankData";
 
-const errorDialog = forwardRef(function Dialog({ children }, ref) {
+const ErrorDialog = forwardRef(function Dialog({ children }, ref) {
   const { errorMsg, setErrorMsg } = useBankData();
 
   function closeDialog() {
@@ -20,4 +20,4 @@ const errorDialog = forwardRef(function Dialog({ children }, ref) {
   );
 });
 
-export default errorDialog;
+export default ErrorDialog;

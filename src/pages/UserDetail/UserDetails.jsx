@@ -5,41 +5,36 @@ import { useBankData } from "../../Context/bankData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import Operations from "../../components/Operations/Operations";
+import axios from "axios";
 
 export default function UserDetails() {
-  const [data, setData] = useState({});
-  const { getUsers } = useBankData();
+  const { getUserById, currentClient, setCurrentClient } = useBankData();
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    const user = getUsers.find((info) => info.id === +id);
-    if (user) {
-      setData(user);
-    } else {
-      setData(null);
-    }
-  }, [getUsers, id]);
+    getUserById(id);
+  }, []);
 
   return (
     <main className="UserDetails page">
-      {data ? (
+      {currentClient ? (
         <>
           <div className="name">
-            <h1>{data.name}</h1>
+            <h1>{currentClient.name}</h1>
           </div>
           <div className="back-btns">
-            <button className="back-btn home" onClick={() => navigate("/")}>
+            <button className="back-btn home" onClick={() => navigate("/data")}>
               <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
               Home
             </button>
           </div>
 
           <div className="info">
-            <div className="id">ID: {data.id}</div>
-            <div className="email">Email: {data.email}</div>
-            <div className="cash">Cash: {data.cash}</div>
-            <div className="credit">Credit: {data.credit}</div>
+            <div className="id">ID: {currentClient.id}</div>
+            <div className="email">Email: {currentClient.email}</div>
+            <div className="cash">Cash: {currentClient.cash}</div>
+            <div className="credit">Credit: {currentClient.credit}</div>
           </div>
           <Operations />
         </>
@@ -47,7 +42,7 @@ export default function UserDetails() {
         <div className="not-found">
           <button
             className="not-found-back back-btn "
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/data")}
           >
             <FontAwesomeIcon icon={faChevronLeft} className="back-icon" />
             Home
