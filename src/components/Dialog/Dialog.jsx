@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Dialog.css";
 import { forwardRef } from "react";
 import { useBankData } from "../../Context/bankData";
+import FailedToCreateClientModal from "./FailedToCreateClientModal/FailedToCreateClientModal";
 
 const dialogModal = forwardRef(function Dialog({ children }, ref) {
+  const [emailExists, setEmailExists] = useState();
   const { addClient, getUsers } = useBankData();
 
   const nameRef = useRef();
@@ -20,9 +22,11 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
       (data) => data.email === emailRef.current.value
     );
     const checkIfIncludes = findEmail.includes(true);
-    if (checkIfIncludes) {
-      alert("Email is already taken");
-    }
+    setEmailExists(checkIfIncludes);
+    // if (checkIfIncludes) {
+    //   alert("Email is already taken");
+    //
+    // }
 
     if (
       nameRef.current.value.length !== 0 &&
@@ -36,8 +40,6 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
         credit: creditRef.current.value === "" ? 0 : creditRef.current.value,
         isActive: statusRef.current.checked === true ? true : false,
       });
-    } else {
-      alert("Please fill the name and email fields");
     }
   }
 
@@ -45,8 +47,13 @@ const dialogModal = forwardRef(function Dialog({ children }, ref) {
     <dialog ref={ref} className="create-dialog">
       <form method="dialog">
         <div className="input-container">
+          {emailExists && (
+            <FailedToCreateClientModal>
+              Email already Used
+            </FailedToCreateClientModal>
+          )}
           <input type="text" placeholder="Name" ref={nameRef} />
-          <input type="email" placeholder="Email" ref={emailRef} />
+          <input type="text" placeholder="Email" ref={emailRef} />
           <input type="number" placeholder="Cash" ref={cashRef} />
           <input type="number" placeholder="Credit" ref={creditRef} />
           <div className="active-status">

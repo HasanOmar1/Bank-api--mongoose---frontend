@@ -7,6 +7,7 @@ import { useCreateUser } from "../../Context/createUser";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import FailedToCreateClientModal from "../../components/Dialog/FailedToCreateClientModal/FailedToCreateClientModal";
 
 export default function Home() {
   const [data, setData] = useState([]);
