@@ -33,7 +33,7 @@ export default function CreateUserProvider({ children }) {
   const loginUser = async (user) => {
     try {
       const response = await axios.post(
-        "  import.meta.env.VITE_BASE_URL/users/login",
+        `  ${import.meta.env.VITE_BASE_URL}/users/login`,
         user
       );
       if (!response) {
@@ -57,7 +57,7 @@ export default function CreateUserProvider({ children }) {
         headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
       };
       const response = await axios.get(
-        "  import.meta.env.VITE_BASE_URL/users",
+        `  ${import.meta.env.VITE_BASE_URL}/users`,
         {},
         config
       );
